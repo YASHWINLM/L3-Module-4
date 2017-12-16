@@ -23,11 +23,11 @@ public static void main(String[] args) {
 	r4.setPenColor(Color.YELLOW);
 	r5.setPenColor(Color.GREEN);
 	
-	r1.setPenWidth(8);
-	r2.setPenWidth(8);
-	r3.setPenWidth(8);
-	r4.setPenWidth(8);
-	r5.setPenWidth(8);
+	r1.setPenWidth(10);
+	r2.setPenWidth(10);
+	r3.setPenWidth(10);
+	r4.setPenWidth(10);
+	r5.setPenWidth(10);
 	
 	r1.penDown();
 	r2.penDown();
@@ -35,24 +35,55 @@ public static void main(String[] args) {
 	r4.penDown();
 	r5.penDown();
 	
-	r1.setAngle(60);
-	r2.setAngle(60);
-	r3.setAngle(60);
-	r4.setAngle(60);
-	r5.setAngle(60);
+	r1.hide();
+	r2.hide();
+	r3.hide();
+	r4.hide();
+	r5.hide();
+	
 	
 	new Thread(()->{
 		for (int i = 0; i < 360; i++) {
-			r1.setAngle(i);
-			r1.move(400);
+			r1.turn(360/360);
+			r1.move(1);
+			
 		}
 		
 	
 	}).start();
-	new Thread(()->r2.move(400)).start();
-	new Thread(()->r3.move(400)).start();
-	new Thread(()->r4.move(400)).start();
-	new Thread(()->r5.move(400)).start();
+	new Thread(()->{
+		for (int i = 0; i < 360; i++) {
+			r2.turn(360/360);
+			r2.move(1);
+			
+		}
+		
+	
+	}).start();
+	new Thread(()->{
+		for (int i = 0; i < 360; i++) {
+			r3.turn(360/360);
+			r3.move(1);
+		}
+		
+	
+	}).start();
+	new Thread(()->{
+		for (int i = 0; i < 360; i++) {
+			r4.turn(360/360);
+			r4.move(1);
+		}
+		
+	
+	}).start();
+	new Thread(()->{
+		for (int i = 0; i < 360; i++) {
+			r5.turn(360/360);
+			r5.move(1);
+		}
+		
+	
+	}).start();
 
 }
 }
