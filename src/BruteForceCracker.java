@@ -19,8 +19,26 @@ public class BruteForceCracker {
 		System.out.println("Starting Brute Force Checker");
 		startTime = System.currentTimeMillis();
 		
-		int ctr = 0;
-		while(!checkCode(ctr++));
+		for (int i = 0; i < 4; i++) {
+			final int j=i;
+			new Thread (()->{ 
+				int ctr =0;
+				ctr+=j*10;
+				while(!checkCode(ctr++));
+
+				endTime = System.currentTimeMillis();
+				elapsedTime = (float)(endTime - startTime);
+				elapsedTime /= 1000.f;
+				System.out.println("Total time taken: " + elapsedTime + " seconds");
+			}
+			
+			).start();
+			
+		}
+		int ctr2 = 0;
+		while(!checkCode(ctr2++));
+		
+		
 		
 		endTime = System.currentTimeMillis();
 		elapsedTime = (float)(endTime - startTime);
@@ -31,8 +49,10 @@ public class BruteForceCracker {
 	public static boolean checkCode(long p){
 		if(p == code){
 			return true;
-		}else{
+		}
+		
+		
 			return false;
 		}
 	}
-}
+
